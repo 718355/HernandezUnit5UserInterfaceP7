@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class Target : MonoBehaviour
         {
             gameManager.UpdateLives(-1);
         }
+        
     }
 
     Vector3 RandomForce()
@@ -62,5 +64,14 @@ public class Target : MonoBehaviour
     Vector3 RandomSpawnPos()
     {
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
+    }
+    public void DestroyTarget()
+    {
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.transform.rotation);
+            gameManager.UpdateScore(pointValue);
+        }
     }
 }
