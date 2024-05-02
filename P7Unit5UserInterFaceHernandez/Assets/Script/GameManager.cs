@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     public GameObject titleScreen;
 
+    //music
+
+    public AudioClip easy;
+    public AudioClip medium;
+    public AudioClip hard;
+    private AudioSource source;
+
     public GameObject titleBg;
     public GameObject ezBg;
     public GameObject mdBg;
@@ -29,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        source = gameObject.GetComponent<AudioSource>();
     }
     private void ChangedPaused()
     {
@@ -88,20 +95,32 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         UpdateLives(38);
 
+
+        //I wonder who wrote this little bit of code
+
         if (difficulty == 1)
         {
             Destroy(titleBg);
             ezBg.gameObject.SetActive(true);
+            source.Pause();
+            source.clip = easy;
+            source.Play();
         }
         else if(difficulty == 2)
         {
             Destroy(titleBg);
             mdBg.gameObject.SetActive(true);
+            source.Pause();
+            source.clip = medium;
+            source.Play();
         }
         else
         {
             Destroy(titleBg);
             hdBg.gameObject.SetActive(true);
+            source.Pause();
+            source.clip = hard;
+            source.Play();
         }
 
         titleScreen.gameObject.SetActive(false);

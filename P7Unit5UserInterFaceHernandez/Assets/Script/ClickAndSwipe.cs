@@ -21,7 +21,7 @@ public class ClickAndSwipe : MonoBehaviour
         col = GetComponent<BoxCollider>();
         trail.enabled = false;
         col.enabled = false;
-        gameManager = GameObject.Find("Game manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
