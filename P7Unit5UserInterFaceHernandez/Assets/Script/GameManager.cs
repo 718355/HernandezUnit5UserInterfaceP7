@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         spawnRate /= difficulty;
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
-        UpdateLives(38);
+        UpdateLives(15);
 
 
         //I wonder who wrote this little bit of code
