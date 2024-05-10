@@ -1144,7 +1144,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tears of the Crates
+  m_text: 'Tears of the Castle
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1567,7 +1569,7 @@ MonoBehaviour:
   titleScreen: {fileID: 314707713}
   easy: {fileID: 8300000, guid: a21a3f5c51d2caa4aa7b9f91100c1258, type: 3}
   medium: {fileID: 8300000, guid: afd237e57f4614d4baef2e9381c5e82c, type: 3}
-  hard: {fileID: 8300000, guid: b43015698a858e4409b99b607de9588e, type: 3}
+  hard: {fileID: 8300000, guid: f74e7335d9b080a4b8079b0be1581a10, type: 3}
   titleBg: {fileID: 1829648827}
   ezBg: {fileID: 681168039}
   mdBg: {fileID: 371012143}
