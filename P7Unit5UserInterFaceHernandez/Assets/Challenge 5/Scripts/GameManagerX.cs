@@ -4,17 +4,20 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 public class GameManagerX : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI timeText;
     public GameObject titleScreen;
     public Button restartButton; 
 
     public List<GameObject> targetPrefabs;
 
     private int score;
+    public float timeValue;
     private float spawnRate = 1.5f;
     public bool isGameActive;
 
@@ -23,12 +26,13 @@ public class GameManagerX : MonoBehaviour
     private float minValueY = -3.75f; //  y value of the center of the bottom-most square
     
     // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
-        spawnRate /= 5;
+        spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         score = 0;
+        timeValue = 60;
         UpdateScore(0);
         titleScreen.SetActive(false);
     }
@@ -70,14 +74,30 @@ public class GameManagerX : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        scoreText.text = "score";
+        scoreText.text = "score "+ score;
+    }
+    public void Update()
+    {
+       if (isGameActive == true)
+        {
+            TimeLeft();
+        }
+       if (timeValue < 0)
+        {
+            GameOver();
+        }
+    }
+    public void TimeLeft()
+    {
+        timeValue -= Time.deltaTime;
+        timeText.text = "time " + Mathf.Round(timeValue);
     }
 
     // Stop game, bring up game over text and restart button
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(true);
         isGameActive = false;
     }
 
@@ -87,4 +107,8 @@ public class GameManagerX : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    internal void StartGame()
+    {
+        throw new System.NotImplementedException();
+    }
 }
